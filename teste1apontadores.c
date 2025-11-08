@@ -10,6 +10,7 @@ int main()
     int flag=0;
     int *p;
     int soma=0;
+    int maior = 0;
     
     do
     { 
@@ -41,9 +42,15 @@ int main()
     
     for (int * p = numeros;p < &numeros[5];p++)
     {
+        if (*p > maior)
+        {
+            maior = *p;
+        }
         soma = soma + *p;
     }
-    printf("soma: %d", soma);
+    printf("soma: %d; maior: %d", soma, maior);
+
+    
 
     getchar ();
     return 0;
