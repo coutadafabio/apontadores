@@ -7,53 +7,51 @@ int main()
 {
     int numeros[5];
     char n[30];
-    int flag=0;
-    int *p;
-    int soma=0;
+    int flag;
+    int soma = 0;
     int maior = 0;
-    
-    do
-    { 
-        flag=0;
-        
-        for (int i=0; i<5;i++)
-        {
-            printf("Insere %d numero valido:",i+1);
-            scanf(" %c",&n[i]);
-            n[i+1]='\0';
-        }
-        
-        
-        for (int i=0; i<strlen(n); i++)
-        {
-            if (isdigit(n[i])==0)
-            {
-                printf("Erro!\n");
-                break;
-            }else
-            {
-                numeros[i]=n[i]-'0';
-                flag++;
+    int c = 0;
 
+    while (c < 5)
+    { 
+        flag = 1; // assume válido até provar o contrário
+        printf("Insere %d numero valido: ", c + 1);
+        
+        fgets(n, sizeof(n), stdin);
+        n[strcspn(n, "\n")] = '\0'; // remover \n
+
+        // Validar cada char da string
+        for (int i = 0; i < strlen(n); i++)
+        {
+            if (!isdigit(n[i]))
+            {
+                printf("Erro! Insira apenas dígitos.\n");
+                flag = 0;
+                break;
             }
         }
-    }while (flag != 5);
-    
-    
-    for (int * p = numeros;p < &numeros[5];p++)
+
+        // Se válido, converter e guardar
+        if (flag == 1)
+        {
+            // Converter string para inteiro
+            numeros[c] = atoi(n);
+            c++;
+        }
+    }
+
+    // Usar ponteiro para somar e encontrar maior
+    for (int *p = numeros; p < &numeros[5]; p++)
     {
+        soma += *p;
         if (*p > maior)
         {
             maior = *p;
         }
-        soma = soma + *p;
     }
-    printf("soma: %d; maior: %d", soma, maior);
 
-    
-
-    getchar ();
+    printf("Soma: %d; Maior: %d\n", soma, maior);
     return 0;
-
 }
+
 
