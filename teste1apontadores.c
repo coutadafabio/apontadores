@@ -12,8 +12,14 @@ int main()
     do
     { 
         flag=0;
-        printf("Insere 1 numero valido:");
-        fgets(n,30,stdin);
+        
+        for (int i=0; i<5;i++)
+        {
+            printf("Insere %d numero valido:",i+1);
+            scanf(" %c",&n[i]);
+        }
+        
+        
         n[strcspn(n,"\n")]='\0';
         for (int i=0; i<strlen(n); i++)
         {
