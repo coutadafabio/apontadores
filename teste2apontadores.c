@@ -4,17 +4,24 @@
 #include <stdlib.h>
 #define T 30
 
+int a;
+int b;
+
 void swap (int * ptr1, int * ptr2)
 {
-
+    int aux = *ptr1;
+    a = *ptr2;
+    b = aux;
+    printf("A: %d; B: %d (depois troca)\n", a,b);
 }
 
 int main()
 {
-    int a;
-    int b;
+    
     int flag = 0;
     char numeros [T];
+    int * ptr1;
+    int * ptr2;
     for (int c=1; c<3; c++)
     {
         do
@@ -46,7 +53,10 @@ int main()
             }
         }while (flag == 0);
     }
-    printf("%d numero 1; %d numero 2", a, b);
+    printf("A: %d; B: %d (antes troca)\n", a, b);
+    ptr1 = &a;
+    ptr2 = &b;
+    swap(ptr1,ptr2);
     getchar();
     return 0;
 }
