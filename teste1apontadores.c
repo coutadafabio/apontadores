@@ -8,6 +8,8 @@ int main()
     int numeros[5];
     char n[30];
     int flag=0;
+    int *p;
+    int soma=0;
     
     do
     { 
@@ -17,27 +19,34 @@ int main()
         {
             printf("Insere %d numero valido:",i+1);
             scanf(" %c",&n[i]);
+            n[i+1]='\0';
         }
         
         
-        n[strcspn(n,"\n")]='\0';
         for (int i=0; i<strlen(n); i++)
         {
             if (isdigit(n[i])==0)
             {
                 printf("Erro!\n");
-                flag=0;
                 break;
             }else
             {
                 numeros[i]=n[i]-'0';
                 flag++;
+
             }
         }
-    }while (flag==0 || flag != 5);
-    for (int i= 0; i<5; i++)
-    printf("%d válido\n",numeros[i]);
+    }while (flag != 5);
+    
+    
+    for (int * p = numeros;p < &numeros[5];p++)
+    {
+        soma = soma + *p;
+    }
+    printf("soma: %d", soma);
 
     getchar ();
     return 0;
+
 }
+
