@@ -1,40 +1,26 @@
- #include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
+#include <stdio.h>
 
-int main()
-{
-    int numeros [10]={58,56,89,102,103,2005,22,64,78,98};
-    int *ptr1;
-    int aux;
-    int aux2;
-    int aux3;
-    int numerosaux[10];
-    int *ptraux = numerosaux;
-    ptr1 = numeros;  // inicializar ponteiro
-    aux = *ptr1;     // aux = 10
-    aux2 = *ptr1;    // iniciar aux2 também
-    
+int main() {
+    int nums[10] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    int *p, *q;
+    int temp;
 
-    for(ptr1 = numeros; ptr1 < numeros + 10; ptr1++, ptraux++)
-    {   
-        if (*ptr1<*(ptr+1))
-        {
-            aux=*ptr1;
-            *ptraux = aux;
-        }
-        else{
-            *ptraux = 0;
+    // Ordenar com ponteiros (selection/bubble style)
+    for (p = nums; p < nums + 10; p++) {
+        for (q = p + 1; q < nums + 10; q++) {
+            if (*q < *p) {
+                temp = *p;
+                *p = *q;
+                *q = temp;
+            }
         }
     }
-    ptraux = numerosaux;
-    for (ptr1=numeros; ptr1<numeros+10; ptr1++, ptraux++)
-    {
-        printf("%d\n", *ptraux);
-            
-    }
-    getchar();
 
+    // Imprimir array ordenado
+    for (p = nums; p < nums + 10; p++) {
+        printf("%d ", *p);
+    }
+
+    printf("\n");
     return 0;
 }
