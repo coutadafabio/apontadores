@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void calcminmax(int * p1, int n)
+void calcminmax(int * p1)
 {
     int max=0;
     int min = *p1;
-    for (int i= 0; i<=n-1; i++)
+    for (int i= 0; i<=5; i++)
     {
         if (*p1 > max)
         {
@@ -22,7 +22,7 @@ void calcminmax(int * p1, int n)
 
 int main()
 {
-    int n=5;
+    
     int a[5] = {35,26,79,897,50};
     int * p1 = a;
     calcminmax (p1,n);
