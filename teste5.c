@@ -31,13 +31,44 @@ int contarvogais (char texto[], char *p)
     return i;
 }
 
+void imprimecontrario (char texto[], char * p)
+{
+    int i = 0;
+    char * aux = p;
+    char temp[T];
+    char * t= temp;
+    while (*aux != '\0')
+    {
+        aux ++;
+        i++;
+    }
+    aux--;
+    for (int c = i; c>=1; c--)
+    {
+        *t = *aux;
+        aux--;
+        t++;
+    }
+    *t='\0';
+
+    for (int c = i; c>=1; c--)
+    {
+        t--;
+    }
+
+
+    
+    printf("A string ao contario: %s",t);
+}
+
 int main()
 {
     char texto[T] = "fAbIocOutAdaAA";
     char * p;
     p=texto;
-    printf("A string %s tem %zu carateres\n", texto, contarcarateres(texto, p));
-    printf("A string %s tem %d vogais\n", texto, contarvogais(texto, p));
+    //printf("A string %s tem %zu carateres\n", texto, contarcarateres(texto, p));
+    //printf("A string %s tem %d vogais\n", texto, contarvogais(texto, p));
+    imprimecontrario (texto,p);
 
     getchar();
 
